@@ -51,3 +51,6 @@ export interface ConnectorFilters {
 	type?: ConnectorType;
 	status?: ConnectorStatus;
 }
+
+// Re-export Bybit types
+export * from './bybit.types';

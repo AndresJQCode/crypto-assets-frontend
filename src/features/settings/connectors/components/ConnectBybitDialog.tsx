@@ -2,14 +2,15 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
 import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -22,13 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { useConnectBybit } from "../hooks";
-import { ConnectorIcon } from "./ConnectorIcon";
-import { Loader2 } from "lucide-react";
-
-interface BybitConnectorProps {
-	open: boolean;
-	onOpenChange: (open: boolean) => void;
-}
+import { Loader2, Plus } from "lucide-react";
 
 const bybitSchema = z.object({
   name: z.string().min(1, "El nombre es requerido"),
@@ -39,7 +34,8 @@ const bybitSchema = z.object({
 
 type BybitFormData = z.infer<typeof bybitSchema>;
 
-export const BybitConnector = ({ open, onOpenChange }: BybitConnectorProps) => {
+export function ConnectBybitDialog() {
+  const [open, setOpen] = useState(false);
   const { mutate: connectBybit, isPending } = useConnectBybit();
 
   const form = useForm<BybitFormData>({
@@ -56,31 +52,27 @@ export const BybitConnector = ({ open, onOpenChange }: BybitConnectorProps) => {
     connectBybit(data, {
       onSuccess: () => {
         form.reset();
-        onOpenChange(false);
+        setOpen(false);
       },
     });
   };
 
-	const handleOpenChange = (newOpen: boolean) => {
-		if (!isPending) {
-			onOpenChange(newOpen);
-		}
-	};
-
-	return (
-		<Dialog open={open} onOpenChange={handleOpenChange}>
-			<DialogContent className="sm:max-w-[500px]">
-				<DialogHeader>
-					<div className="flex items-center gap-3">
-						<ConnectorIcon type="bybit" size="sm" />
-						<div>
-							<DialogTitle>Conectar cuenta Bybit</DialogTitle>
-							<DialogDescription>
-                Ingresa tus credenciales de API de Bybit. Solo necesitas permisos de <strong>lectura</strong>.
-							</DialogDescription>
-						</div>
-					</div>
-				</DialogHeader>
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button>
+          <Plus className="h-4 w-4 mr-2" />
+          Conectar Bybit
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[500px]">
+        <DialogHeader>
+          <DialogTitle>Conectar cuenta Bybit</DialogTitle>
+          <DialogDescription>
+            Ingresa tus credenciales de API de Bybit para conectar tu cuenta.
+            Solo necesitas permisos de <strong>lectura</strong>.
+          </DialogDescription>
+        </DialogHeader>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -162,7 +154,7 @@ export const BybitConnector = ({ open, onOpenChange }: BybitConnectorProps) => {
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => handleOpenChange(false)}
+                onClick={() => setOpen(false)}
                 disabled={isPending}
               >
                 Cancelar
@@ -174,7 +166,7 @@ export const BybitConnector = ({ open, onOpenChange }: BybitConnectorProps) => {
             </div>
           </form>
         </Form>
-			</DialogContent>
-		</Dialog>
-	);
-};
+      </DialogContent>
+    </Dialog>
+  );
+}
