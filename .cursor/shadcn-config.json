@@ -1,0 +1,24 @@
+{
+	"name": "shadcn/ui Configuration",
+	"description": "Configuración para shadcn/ui components en este proyecto",
+	"version": "1.0.0",
+	"shadcn": {
+		"style": "new-york",
+		"componentPath": "src/components/ui",
+		"utilsPath": "src/lib/utils.ts",
+		"cssPath": "src/styles.css",
+		"aliases": {
+			"@/components": "src/components",
+			"@/lib/utils": "src/lib/utils",
+			"@/components/ui": "src/components/ui",
+			"@/lib": "src/lib",
+			"@/hooks": "src/hooks"
+		}
+	},
+	"features": ["button", "card", "dropdown-menu", "input", "separator", "sheet", "sidebar", "skeleton", "tooltip"],
+	"architecture": {
+		"pattern": "screaming-architecture",
+		"featureBasedFolders": true,
+		"featuresPath": "src/features"
+	}
+}

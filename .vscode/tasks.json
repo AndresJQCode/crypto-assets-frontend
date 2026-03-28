@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Format current file with Biome",
+			"type": "shell",
+			"command": "npx",
+			"args": ["@biomejs/biome", "format", "--write", "${file}"],
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "silent",
+				"panel": "shared"
+			}
+		}
+	]
+}

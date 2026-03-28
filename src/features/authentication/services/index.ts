@@ -1,0 +1,11 @@
+// Exportar todos los servicios individuales
+export { getAuthConfig } from "./authConfig";
+export { forgotPassword } from "./forgotPassword";
+export { getCurrentUser } from "./getCurrentUser";
+export { loginWithCredentials } from "./loginWithCredentials";
+export { loginWithGoogle } from "./loginWithGoogle";
+export { loginWithMicrosoft } from "./loginWithMicrosoft";
+export { logout } from "./logout";
+export { processAuthCallback } from "./processAuthCallback";
+export { registerUser } from "./registerUser";
+export { resetPassword } from "./resetPassword";

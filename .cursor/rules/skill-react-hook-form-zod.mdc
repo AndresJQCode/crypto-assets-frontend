@@ -1,0 +1,9 @@
+---
+description: Formularios con React Hook Form, Zod, Form/FormField de Shadcn, mode onChange
+globs: **/*Form*, **/*Schema*, **/pages/Create*, **/pages/Edit*
+alwaysApply: false
+---
+
+# React Hook Form + Zod
+
+Usar useForm con zodResolver(schema), mode: 'onChange'. Siempre FormField de Shadcn para cada campo. SelectItem nunca value vacío. Formularios crear y editar en componentes separados. Deshabilitar submit con form.formState.isValid y isPending de la mutación.

@@ -1,0 +1,116 @@
+---
+description: Instrucciones generales del proyecto, convenciones y arquitectura
+alwaysApply: true
+---
+
+# Instrucciones generales
+- Siempre el código debe ser en inglés pero el texto del interfaz debe ser en español.
+- No crear manualmente archivos de rutas, usa el comando:
+- No crear manualmente componentes de shadcn, usa el comando:
+  npx shadcn@latest add <componente>
+- Siempre implementar buenas prácticas de diseño, como el uso de shadcn, tailwind, etc.
+- Siempre implementar buenas prácticas de programación separando responsabilidades.
+- Siempre implementar buenas prácticas de seguridad.
+- Siempre implementar buenas prácticas de performance.
+- Siempre implementar buenas prácticas de accesibilidad.
+- Siempre implementar buenas prácticas de internacionalización.
+- Siempre implementar buenas prácticas de testing.
+- Siempre implementar buenas prácticas de documentación.
+- Siempre implementar buenas prácticas de mantenimiento.
+- Siempre tener bien organizado el código.
+- Siempre usar Link de tanstack router en vez de window.location.href.
+- Siempre eliminar importaciones innecesarias.
+
+# Package manager
+
+Usa siempre `bun` en vez de `npm` o `yarn` para correr scripts y comandos en este proyecto.
+Ejemplo: en vez de `npm run build`, ejecuta `bun run build`.
+Para instalar dependencias, utiliza `bun add`.
+Para agregar componentes shadcn, usa el comando:
+bunx shadcn@latest add <componente>
+
+Esto asegura compatibilidad y velocidad en el flujo de trabajo del proyecto.
+
+# shadcn instructions
+- Usar siempre el comando `bunx shadcn@latest add <componente>` para instalar componentes.
+- Siempre cuando se use el componente SelectItem no dejar value vacío
+
+# Screaming Architecture
+
+Este proyecto utiliza Screaming Architecture. Sigue estas reglas al crear o modificar archivos:
+
+## Estructura de Carpetas
+
+- Organiza el código por características de negocio (features), no por tipo técnico
+- Cada característica debe tener su propia carpeta con todo lo necesario
+- La estructura de carpetas debe "gritar" lo que hace la aplicación
+
+## Reglas de Organización
+
+1. **Features/Características**: Cada característica de negocio va en su propia carpeta (ej: `users/`, `products/`, `orders/`)
+2. **Dentro de cada feature**:
+
+   - `components/` - Componentes específicos de la característica
+   - `hooks/` - Hooks personalizados relacionados
+   - `services/` - Lógica de negocio y llamadas a API
+   - `types/` - Tipos TypeScript específicos
+   - `utils/` - Utilidades específicas de la característica
+   - `pages/` - Páginas específicas de la característica
+
+3. **Carpetas compartidas**:
+   - `shared/` - Código reutilizable entre características
+   - `lib/` - Configuraciones y utilidades globales
+   - `ui/` - Componentes de UI genéricos (shadcn/ui)
+
+## Naming Conventions
+
+- Nombres de carpetas en lowercase con guiones (kebab-case)
+- Nombres de archivos descriptivos que indiquen su propósito
+- Evita nombres técnicos genéricos como "components", "utils" en el nivel raíz
+
+## Ejemplo de Estructura
+
+```
+src/
+├── features/
+│   ├── user-management/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── types/
+│   │   ├── utils/
+│   │   └── pages/
+│   │       ├── AdminUserManagementPage.tsx
+│   │       ├── CreateUserManagementPage.tsx
+│   │       └── EditUserManagementPage.tsx
+│   └── products/
+│       └── ...
+├── shared/
+├── components/ui/ (shadcn components)
+└── lib/
+```
+
+# Instrucciones para crear un nuevo feature
+
+1. Crear la carpeta del feature en la carpeta `src/features`
+2. Crear las subcarpetas: components, hooks, services, types, utils, pages
+3. Crear constantes/endpoints si hay API. Un archivo por servicio y por hook (ver skill feature-one-file-per-responsibility).
+4. Hooks: useGet[Feature]ByID, useGet[Features], useCreate[Feature], useUpdate[Feature], useDelete[Feature].
+5. Services: get[Feature]ByID, get[Features], create[Feature], update[Feature], delete[Feature].
+6. Pages: Admin[Feature]Page, Create[Feature]Page, Edit[Feature]Page.
+7. Rutas bajo layout _admin NO incluyen prefijo /admin. Ejemplo: usar /users en vez de /admin/users.
+
+# Formularios
+
+- Usar Form de shadcn/ui y react-hook-form con zod para la validación.
+- Siempre usar el componente FormField de shadcn/ui para los campos del formulario.
+- Siempre usar mode 'onChange' para el formulario.
+
+# Servicios
+
+- Usar el archivo `src/lib/env.ts` getApiUrl para obtener la URL de la API.
+- Centralizar URLs en constants/endpoints.ts por feature cuando aplique.
+
+# Rutas
+
+- Cuando se use el layout _admin, las rutas NO deben incluir el prefijo /admin porque el layout ya maneja eso. Ejemplo: en vez de /admin/users, usar /users.

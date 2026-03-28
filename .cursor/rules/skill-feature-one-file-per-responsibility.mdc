@@ -1,0 +1,23 @@
+---
+description: Un archivo por servicio y un archivo por hook en features; index.ts solo reexporta
+globs: src/features/**/services/**, src/features/**/hooks/**
+alwaysApply: false
+---
+
+# Un archivo por responsabilidad (Features)
+
+**Cada servicio y cada hook debe vivir en su propio archivo.** Aplicar al crear o extender un feature.
+
+## Servicios
+
+- Una función de API = un archivo (ej: `getUsersService.ts`, `getUserByIdService.ts`).
+- Archivo: `[nombreAccion]Service.ts` en camelCase.
+- `index.ts` solo reexporta las funciones del feature.
+
+## Hooks
+
+- Un hook = un archivo (ej: `useGetUsers.ts`, `useGetUserById.ts`).
+- Archivo: `use[Nombre].ts`. Export: un hook por archivo.
+- `index.ts` reexporta todos los hooks.
+
+No agrupar varios servicios en un solo `userService.ts` ni varios hooks en un solo `useUsers.ts`.

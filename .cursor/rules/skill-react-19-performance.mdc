@@ -1,0 +1,9 @@
+---
+description: React 19 use/useOptimistic/useFormStatus/useActionState, memo/useCallback/useMemo, lazy
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# React 19 + Rendimiento
+
+Usar memo/useCallback/useMemo solo cuando hay problema real de re-renders. Estado lo más cerca posible. Keys estables en listas (nunca index). Lazy loading para rutas pesadas. Context separado por frecuencia de actualización. Valor del Provider memorizado con useMemo cuando sea objeto.

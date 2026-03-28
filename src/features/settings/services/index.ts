@@ -1,0 +1,1 @@
+export { getAllPermissions } from "./getAllPermissionsService";

@@ -1,0 +1,9 @@
+---
+description: PermissionGuard, PermissionButton, PermissionDropdownItem, PermissionRoute, usePermissions
+globs: src/components/permissions/**, src/constants/permissions.ts, **/*Permission*
+alwaysApply: false
+---
+
+# Sistema de Permisos
+
+Usar PermissionGuard, PermissionButton, PermissionDropdownItem y PermissionRoute de `@/components/permissions`. Hook usePermissions de `@/contexts/usePermissions` para hasPermission, hasAnyPermission, hasAllPermissions. Definir permisos en src/constants/permissions.ts. En tablas, mostrar columna de acciones solo si hasAnyPermission(['feature.edit', 'feature.delete']).

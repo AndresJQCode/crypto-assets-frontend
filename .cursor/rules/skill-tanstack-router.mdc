@@ -1,0 +1,9 @@
+---
+description: createFileRoute, rutas _admin sin /admin, Link, useNavigate, useParams
+globs: src/routes/**
+alwaysApply: false
+---
+
+# TanStack Router
+
+Rutas en src/routes con createFileRoute. Rutas bajo _admin NO llevan prefijo /admin. Navegación: Link y useNavigate (nunca window.location.href). Parámetros: Route.useParams(). Search: validateSearch y Route.useSearch().

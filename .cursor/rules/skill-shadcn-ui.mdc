@@ -1,0 +1,9 @@
+---
+description: Componentes Shadcn/ui, imports, toast (sonner), AlertDialog, variantes Button
+globs: src/components/ui/**, **/*.tsx
+alwaysApply: false
+---
+
+# Shadcn/ui
+
+Instalar con `bunx shadcn@latest add <componente>`. Componentes en `@/components/ui/`. Notificaciones con `import { toast } from 'sonner'`. NUNCA dejar value vacío en SelectItem. Usar variantes semánticas (destructive para eliminar). Para confirmaciones usar AlertDialog.

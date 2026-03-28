@@ -1,0 +1,130 @@
+/* Contenedor de explosión */
+.explosion-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Partículas de explosión */
+.explosion-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: var(--explosion-color);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: explode 0.6s ease-out forwards;
+}
+
+/* Animación de explosión */
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) translateX(calc(cos(var(--particle-angle)) * 40px)) translateY(calc(sin(var(--particle-angle)) * 40px)) scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateX(calc(cos(var(--particle-angle)) * 80px)) translateY(calc(sin(var(--particle-angle)) * 80px)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* Botón base */
+.explosion-button {
+  position: relative;
+  overflow: visible;
+  transition: all 0.2s ease;
+}
+
+/* Contenido del botón */
+.explosion-button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Efecto de explosión en el botón */
+.explosion-button.exploding {
+  animation: button-explode 0.3s ease-out;
+}
+
+@keyframes button-explode {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Estado de loading */
+.explosion-button.loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.explosion-button.loading .explosion-button-content {
+  opacity: 0.7;
+}
+
+/* Spinner de loading */
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Variantes de color para las partículas */
+.explosion-button[data-variant="destructive"] .explosion-particle {
+  --explosion-color: #ef4444;
+}
+
+.explosion-button[data-variant="default"] .explosion-particle {
+  --explosion-color: #3b82f6;
+}
+
+.explosion-button[data-variant="secondary"] .explosion-particle {
+  --explosion-color: #6b7280;
+}
+
+/* Efecto de pulso sutil */
+.explosion-button:active:not(.loading):not(:disabled) {
+  animation: button-pulse 0.2s ease-out;
+}
+
+@keyframes button-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

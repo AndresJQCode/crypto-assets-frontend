@@ -1,0 +1,9 @@
+---
+description: useQuery, useMutation, queryKey, invalidateQueries, toast en onSuccess/onError
+globs: src/**/hooks/use*.ts, **/*Query*
+alwaysApply: false
+---
+
+# TanStack Query
+
+Lista: useQuery con queryKey ['resource', page, limit]. Por ID: queryKey ['resource', id], enabled: !!id. Mutaciones: useMutation, en onSuccess invalidateQueries y toast.success, en onError toast.error. Convenciones: lista ['users'], detalle ['user', id].

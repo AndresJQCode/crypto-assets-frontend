@@ -1,0 +1,9 @@
+---
+description: TanStack Table, ColumnDef, useReactTable, manualPagination, server-side
+globs: **/*Table*, **/columns.tsx
+alwaysApply: false
+---
+
+# TanStack Table
+
+ColumnDef con accessorKey, header, cell. useReactTable con data, columns, pageCount, state.pagination, onPaginationChange, manualPagination: true, getCoreRowModel. Paginación server-side: page, pageSize, onPageChange desde la página. Acciones con PermissionDropdownItem.

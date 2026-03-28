@@ -1,0 +1,9 @@
+---
+description: Clases Tailwind, cn(), layout, espaciado, cards, tipografía, responsive
+globs: **/*.tsx, **/*.css
+alwaysApply: false
+---
+
+# Tailwind CSS Patterns
+
+Usar cn() de @/lib/utils para clases condicionales. Layout: flex/grid, space-y/space-x, p-4. Cards: rounded-lg border bg-card. Texto secundario: text-muted-foreground. Colores del sistema: bg-background, bg-card, bg-primary, text-destructive. Mobile first: md: y lg: breakpoints.

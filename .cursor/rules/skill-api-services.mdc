@@ -1,0 +1,47 @@
+---
+description: Servicios API, getApiUrl, fetchWithAuth, tipos paginados y manejo de errores
+globs: src/**/services/**/*.ts, src/lib/env.ts, src/lib/fetchWithAuth.ts
+alwaysApply: false
+---
+
+# Servicios API
+
+Este proyecto centraliza las llamadas a API en servicios dentro de cada feature.
+
+## Configuración Base
+
+```tsx
+// src/lib/env.ts
+export const getApiUrl = () => {
+  const apiUrl = import.meta.env.VITE_API_URL
+  if (!apiUrl) {
+    throw new Error('VITE_API_URL no está configurada')
+  }
+  return apiUrl
+}
+```
+
+## Estructura de un Servicio
+
+- SIEMPRE usar `getApiUrl()` de `src/lib/env.ts`
+- Variable de entorno requerida: `VITE_API_URL`
+- Manejar errores con throw new Error
+- Tipar correctamente las respuestas
+- Centralizar URLs en constants/endpoints.ts por feature cuando aplique
+
+## Tipos para Respuestas Paginadas
+
+```tsx
+export interface PaginatedResponse<T> {
+  data: T[]
+  total: number
+  page: number
+  limit: number
+  totalPages: number
+}
+```
+
+## Reglas Importantes
+
+- No hacer console.log en producción
+- Subir archivos: usar FormData, NO incluir Content-Type (el navegador lo agrega)

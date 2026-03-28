@@ -1,0 +1,9 @@
+---
+description: Estructura por features, carpetas components/hooks/services/types/utils/pages
+globs: src/features/**
+alwaysApply: false
+---
+
+# Screaming Architecture
+
+Estructura por feature: components/, hooks/, services/, types/, utils/, pages/. Un archivo por servicio y por hook. Convenciones: carpetas kebab-case, componentes PascalCase, hooks useCamelCase, servicios [accion]Service.ts. Crear nuevos features siguiendo esta estructura y la skill feature-one-file-per-responsibility.
